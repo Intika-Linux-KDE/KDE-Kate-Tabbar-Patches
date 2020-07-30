@@ -1,5 +1,5 @@
 diff --git a/kate/katetabbutton.cpp b/kate/katetabbutton.cpp
-index dd999df34..0b556194c 100644
+index dd999df34..140bb5675 100644
 --- a/kate/katetabbutton.cpp
 +++ b/kate/katetabbutton.cpp
 @@ -44,6 +44,8 @@ TabCloseButton::TabCloseButton(QWidget * parent)
@@ -11,7 +11,13 @@ index dd999df34..0b556194c 100644
  }
  
  void TabCloseButton::paintEvent(QPaintEvent *event)
-@@ -161,9 +163,9 @@ void KateTabButton::paintEvent(QPaintEvent *ev)
+@@ -156,14 +158,14 @@ void KateTabButton::paintEvent(QPaintEvent *ev)
+     if (! icon().isNull()) {
+         const int y = (height() - 16) / 2;
+         icon().paint(&p, margin, y, 16, 16);
+-        leftMargin += 16;
++        //leftMargin += 16;
+         leftMargin += margin;
      }
  
      // the width of the text is reduced by the close button + 2 * margin
