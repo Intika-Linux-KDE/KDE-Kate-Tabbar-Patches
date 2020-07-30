@@ -1,0 +1,65 @@
+diff --git a/addons/CMakeLists.txt b/addons/CMakeLists.txt
+index d41379ae7..c5e9c04fc 100644
+--- a/addons/CMakeLists.txt
++++ b/addons/CMakeLists.txt
+@@ -8,6 +8,9 @@ set_package_properties(KF5ItemModels PROPERTIES PURPOSE "Required to build the p
+ set_package_properties(KF5ThreadWeaver PROPERTIES PURPOSE "Required to build the project addon")
+ set_package_properties(KF5NewStuff PROPERTIES PURPOSE "Required to build the snippets and project addons")
+ 
++
++ecm_optional_add_subdirectory (lspclient) # Language Server Protocol (LSP) client plugin.
++
+ # document switcher
+ ecm_optional_add_subdirectory (filetree)
+ 
+diff --git a/kate/katetabbar.cpp b/kate/katetabbar.cpp
+index 9aed55240..3cf029f27 100644
+--- a/kate/katetabbar.cpp
++++ b/kate/katetabbar.cpp
+@@ -30,6 +30,10 @@
+ #include <QStyleOptionTab>
+ #include <QWheelEvent>
+ 
++// Tab button active/inactive style
++QString activeStyle = QString::fromUtf8("font-weight: bold;");
++QString inactiveStyle = QString::fromUtf8("font-weight: normal;");
++    
+ class KateTabBarPrivate
+ {
+ public:
+@@ -54,7 +58,7 @@ public:
+ 
+     KateTabButton *activeButton;
+ 
+-    int nextID;
++    int nextID;    
+ 
+ public: // functions
+     /**
+@@ -224,11 +228,13 @@ void KateTabBar::setCurrentTab(int id)
+ 
+     if (d->activeButton) {
+         d->activeButton->setChecked(false);
++        d->activeButton->setStyleSheet(inactiveStyle);
+     }
+ 
+     d->activeButton = tabButton;
+     if (d->activeButton) {
+         d->activeButton->setChecked(true);
++       	d->activeButton->setStyleSheet(activeStyle);
+     }
+ }
+ 
+@@ -404,10 +410,12 @@ void KateTabBar::tabButtonActivated(KateTabButton *tabButton)
+ 
+     if (d->activeButton) {
+         d->activeButton->setChecked(false);
++        d->activeButton->setStyleSheet(inactiveStyle);
+     }
+ 
+     d->activeButton = tabButton;
+     d->activeButton->setChecked(true);
++    d->activeButton->setStyleSheet(activeStyle);
+ 
+     const int id = d->idToTab.key(d->activeButton, -1);
+     Q_ASSERT(id >= 0);
