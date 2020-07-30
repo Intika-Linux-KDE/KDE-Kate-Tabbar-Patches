@@ -1,0 +1,16 @@
+diff --git a/kate/katetabbar.cpp b/kate/katetabbar.cpp
+index 9aed55240..c2136fc84 100644
+--- a/kate/katetabbar.cpp
++++ b/kate/katetabbar.cpp
+@@ -189,9 +193,9 @@ int KateTabBar::insertTab(int position, const QString & text)
+     Q_ASSERT(position <= d->tabButtons.size());
+ 
+     // -1 is append
+-    if (position < 0) {
++//    if (position < 0) {
+         position = d->tabButtons.size();
+-    }
++//    }
+ 
+     KateTabButton *tabButton = new KateTabButton(text, this);
+ 
