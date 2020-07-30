@@ -1,0 +1,26 @@
+diff --git a/kate/katetabbutton.cpp b/kate/katetabbutton.cpp
+index dd999df34..0b556194c 100644
+--- a/kate/katetabbutton.cpp
++++ b/kate/katetabbutton.cpp
+@@ -44,6 +44,8 @@ TabCloseButton::TabCloseButton(QWidget * parent)
+ 
+     // closing a tab closes the document
+     setToolTip(i18n("Close Document"));
++
++    hide();
+ }
+ 
+ void TabCloseButton::paintEvent(QPaintEvent *event)
+@@ -161,9 +163,9 @@ void KateTabButton::paintEvent(QPaintEvent *ev)
+     }
+ 
+     // the width of the text is reduced by the close button + 2 * margin
+-    const int w = width() // width of widget
+-                - m_closeButton->width() - 2 * margin // close button
+-                - leftMargin; // modified button
++    const int w = width() - 12; // width of widget
++                //- m_closeButton->width() - 2 * margin // close button
++                //- leftMargin; // modified button
+ 
+     // draw text, we need to elide to xxx...xxx is too long
+     const QString elidedText = QFontMetrics(font()).elidedText (text(), Qt::ElideMiddle, w);
