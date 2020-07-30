@@ -1,0 +1,17 @@
+diff --git a/kate/katetabbar.cpp b/kate/katetabbar.cpp
+index 9aed55240..3cf029f27 100644
+--- a/kate/katetabbar.cpp
++++ b/kate/katetabbar.cpp
+@@ -143,9 +147,9 @@ KateTabBar::KateTabBar(QWidget *parent)
+     , d(new KateTabBarPrivate())
+ {
+     d->q = this;
+-    d->minimumTabWidth = 150;
+-    d->maximumTabWidth = 350;
+-    d->currentTabWidth = 350;
++    d->minimumTabWidth = 35; //150
++    d->maximumTabWidth = 200; //350
++    d->currentTabWidth = 200; //350
+     d->keepTabWidth = false;
+ 
+     d->isActive = false;
