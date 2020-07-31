@@ -1,0 +1,13 @@
+diff --git a/kate/kateviewmanager.cpp b/kate/kateviewmanager.cpp
+index ff312329f..b35d5cefe 100644
+--- a/kate/kateviewmanager.cpp
++++ b/kate/kateviewmanager.cpp
+@@ -786,7 +786,7 @@ void KateViewManager::splitViewSpace(KateViewSpace *vs,  // = 0
+         QList<int> sizes = currentSplitter->sizes();
+         sizes << (sizes.first() - currentSplitter->handleWidth()) / 2;
+         sizes[0] = sizes[1];
+-        currentSplitter->insertWidget(index, vsNew);
++        currentSplitter->insertWidget(index + 1, vsNew);
+         currentSplitter->setSizes(sizes);
+     } else {
+         // create a new QSplitter and replace vs with the splitter. vs and newVS are
