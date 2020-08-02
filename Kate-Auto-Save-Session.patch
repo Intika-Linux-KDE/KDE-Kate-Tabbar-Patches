@@ -1,0 +1,23 @@
+diff --git a/kate/katedocmanager.cpp b/kate/katedocmanager.cpp
+index 3427c7190..55c11ef48 100644
+--- a/kate/katedocmanager.cpp
++++ b/kate/katedocmanager.cpp
+@@ -204,6 +204,9 @@ KTextEditor::Document *KateDocManager::openUrl(const QUrl &url, const QString &e
+         }
+     }
+ 
++    //Save session on doc close/open
++       KateApp::self()->sessionManager()->sessionSave();
++
+     return doc;
+ }
+ 
+@@ -266,6 +269,9 @@ bool KateDocManager::closeDocuments(const QList<KTextEditor::Document *> documen
+ 
+     emit documentsDeleted(documents.mid(last));
+ 
++    //Save session on doc close/open
++       KateApp::self()->sessionManager()->sessionSave();
++
+     return success;
+ }
